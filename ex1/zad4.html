@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>First task</title>
+
+    <style>
+        body {
+            background-color: #F1F2F5;
+        }
+
+        .wrapper {
+            width: 400px;
+            background-color: white;
+            margin: auto;
+            margin-top: 100px;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .poster {
+            width: 100%;
+        }
+
+        .comment {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            box-sizing: border-box;
+            margin: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <article>
+            <header>
+                <h1>Harry Potter and the Deathly Hallows</h1>
+                <p><strong>J.K. Rowling:</strong></p>
+                <p>Can you rate this movie? Do you like it?</p>
+                <img src="poster.jpg" alt="poster" class="poster" />
+            </header>
+            <main>
+                <h2>Comments</h2>
+                <div class="comment">
+                    <p><b>Harry Potter</b>
+                        5/5</p>
+                </div>
+                <div class="comment">
+
+                    <p><b>Hermione Granger</b>
+                        4/5</p>
+                </div>
+
+                <div class="comment">
+
+                    <p><b>Ron Weasley</b>
+                        4/5</p>
+                    <p>Best one!</p>
+                </div>
+
+                <aside>
+                    <form>
+                        <h2>Write comment</h2>
+                        <hr />
+                    
+                        <label for="textarea-comment">Write your comment:</label><br />
+                        <textarea name="comment" id="textarea-comment"></textarea><br />
+                        0<input type="range" min="0" max="5" name="rating" values="3" />5 <br />
+                        <input type="submit" value="Send comment" </input>
+                    </form>
+                </aside>
+            </main>
+        </article>
+    </div>
+</body>
+
+</html>
