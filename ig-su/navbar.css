@@ -33,7 +33,7 @@ nav.nav {
     justify-content: center;
 }
 
-.nav-right {
+.nav-icons {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -58,3 +58,15 @@ nav.nav {
     display: inline;
 }
 
+@media screen and (max-width: 768px) {
+    .nav-icons {
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+
+        border-top: 1px solid gray;
+    }
+}
