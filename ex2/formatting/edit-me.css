@@ -11,16 +11,16 @@ p:nth-of-type(3) {
     word-spacing: 10px;
 }
 
-p::first-line {
+p {
     text-indent: 10px;
 }
 
 #logo {
-    text-align: right;
+    float: right;
 }
 
 #logo2 {
-    text-align: left;
+    float: left;
 }
 
 #logo3 {
