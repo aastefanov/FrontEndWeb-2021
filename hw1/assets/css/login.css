@@ -1,0 +1,60 @@
+.container-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 90%;
+    max-width: 32rem;
+    /*max-width: 23rem; !*it Сигурно ли е че в презентацията е вярно? *!*/
+    background-color: white;
+    border-radius: 5px;
+    padding: 2.5rem;
+
+    margin: 1rem;
+}
+
+.page-popup {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-weight: normal;
+}
+
+h2 {
+    color: #848694;
+    font-weight: normal;
+
+}
+
+.form-login .textfield {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #848694;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    transition: border .3s;
+    display: block;
+}
+
+.form-login .textfield:focus {
+    border: none;
+    border-bottom: 2px solid purple;
+}
+
+.container-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 10rem;
+    margin-left: auto;
+}

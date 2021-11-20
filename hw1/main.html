@@ -7,56 +7,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
-    <link rel="stylesheet" href="style.css"/>
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/common.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+
+    <title>Flutter &bull; Home</title>
 </head>
 
 <body>
-<nav class="navbar">
+<nav>
     <h1>Flutter</h1>
     <form action="#" method="get" class="flex-form">
-        <input name="searchterm" class="radius-field" placeholder="Search" type="text"/>
-        <button type="submit" class="input-button"><i class="fa fa-search"></i></button>
+        <input name="searchterm" class="radius-field radius-field-default" placeholder="Search" type="text"/>
+        <button type="submit" class="input-button input-button-default"><i class="fa fa-search"></i></button>
     </form>
 </nav>
 <div class="page-normal">
     <aside class="container-profile">
-        <img src="profile.jpg" alt="profile" class="img-profile img-circle"/>
+        <img src="assets/img/profile.jpg" alt="profile" class="img-circle"/>
         <h1>Martin Hristov</h1>
 
         <section class="bgblock profile-footer stats-block">
             <div class="stats">
-                <div><span class="stat-header">Posts</span><br/><span class="stat-value">1</span></div>
-                <div><span class="stat-header">Reactions</span><br/><span class="stat-value">7</span></div>
+                <section>
+                    <header>Posts</header>
+                    <span class="stat-value">1</span></section>
+                <section>
+                    <header>Reactions</header>
+                    <span class="stat-value">7</span></section>
             </div>
-            <form action="login.html">
-                <input type="submit" class="btn btn-fg" value="Log Out"/>
+            <form action="login.html" style="padding: 1rem;">
+                <input type="submit" class="btn btn-filled" value="Log Out"/>
             </form>
         </section>
     </aside>
     <main class="container-posts">
-        <div class="bgblock newpost-block">
-            <img src="profile.jpg" alt="profile" class="newpost-img img-circle"/>
+        <header class="bgblock newpost-block">
+            <img src="assets/img/profile.jpg" alt="profile" class="newpost-img img-circle"/>
             <form action="#" class="flex-form fullwidth">
-                <input name="message" class="radius-field fullwidth" placeholder="Say something" type="text"/>
-                <button type="submit" class="input-button"><i class="fa fa-message"></i></button>
+                <input name="message" class="radius-field radius-field-primary fullwidth" placeholder="Say something"
+                       type="text"/>
+                <button type="submit" class="input-button input-button-primary"><i class="fa fa-message"></i></button>
             </form>
 
-        </div>
-        <article class="post">
+        </header>
+        <section class="post">
             <a href="#">
-                <img src="profile.jpg" alt="profile" class="post-img img-circle"/>
+                <img src="assets/img/profile.jpg" alt="profile"/>
             </a>
-            <div class="post-data">
-                <div class="post-heading">
+            <article>
+                <header>
                     <div>
                         <a href="#"><h1 class="author">Ivan Ivanov</h1></a>
-                        <span class="post-time">&bull; 0 seconds ago</span>
+                        <time datetime="2020-01-01 01:01:01">&bull; 1 year ago</time>
 
                     </div>
-                    <div><i class="fa fa-close fa-lg post-time"></i></div>
-                </div>
-                <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, culpa dolor
+                    <div><i class="fa fa-close fa-lg color-default"></i></div>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, culpa dolor
                     doloribus eaque, illum impedit iste magnam magni nihil nulla odio perspiciatis quaerat, quidem
                     ratione repellat vel vitae. In maxime, quasi quisquam ratione rem sapiente ut? Alias aliquam fugiat
                     nemo numquam ratione repudiandae sequi veniam. Alias aliquam beatae dicta dignissimos dolore
@@ -73,70 +80,72 @@
                     itaque nihil optio placeat, possimus praesentium saepe tempora tenetur. Eum exercitationem fuga,
                     ipsa magnam pariatur rerum sapiente sunt totam vero vitae.</p>
 
-                <address class="media-buttons">
-                    <div class="media-button">
+                <address>
+                    <a href="#">
                         <i class="fa fa-thumbs-up"></i> 5
-                    </div>
-                    <div class="media-button">
+                    </a>
+                    <a href="#">
                         <i class="fa fa-thumbs-down"></i> 3
-                    </div>
+                    </a>
                 </address>
-            </div>
-        </article>
+            </article>
+        </section>
 
-        <article class="post">
+        <section class="post">
             <a href="#">
-                <img src="profile.jpg" alt="profile" class="post-img img-circle"/>
+                <img src="assets/img/profile.jpg" alt="profile"/>
             </a>
-            <div class="post-data">
-                <div class="post-heading">
+            <article>
+                <header>
                     <div>
                         <a href="#">
-                            <h1 class="author">Gosho</h1> <span class="post-time">&bull; 0 seconds ago</span>
+                            <h1 class="author">Gosho</h1>
+                            <time datetime="1970-01-01 00:00:00">&bull; A long time ago in a galaxy far far away</time>
                         </a>
                     </div>
-                    <div><i class="fa fa-close fa-lg post-time"></i></div>
-                </div>
-                <p class="post-content">Lorem ipsum dolor sit amet.</p>
+                    <div><i class="fa fa-close fa-lg color-default"></i></div>
+                </header>
+                <p>Lorem ipsum dolor sit amet.</p>
 
-                <address class="media-buttons">
-                    <div class="media-button">
+                <address>
+                    <a href="#">
                         <i class="fa fa-thumbs-up"></i> 5
-                    </div>
-                    <div class="media-button">
+                    </a>
+                    <a href="#">
                         <i class="fa fa-thumbs-down"></i> 3
-                    </div>
+                    </a>
                 </address>
-            </div>
-        </article>
+            </article>
+        </section>
 
-        <article class="post">
+        <section class="post">
             <a href="#">
-                <img src="profile.jpg" alt="profile" class="post-img img-circle"/>
+                <img src="assets/img/profile.jpg" alt="profile"/>
             </a>
-            <div class="post-data">
-                <div class="post-heading">
+            <article>
+                <header>
                     <div>
                         <a href="#">
-                            <h1 class="author">Pesho</h1> <span class="post-time">&bull; 0 seconds ago</span>
+                            <h1 class="author">Pesho</h1>
+                            <time datetime="2021-01-01 00:00:00">&bull; 0 seconds ago</time>
                         </a>
                     </div>
-                    <div><i class="fa fa-close fa-lg post-time"></i></div>
-                </div>
-                <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur blanditiis
+                    <div><i class="fa fa-close fa-lg color-default"></i></div>
+                </header>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur blanditiis
                     consectetur dolores eligendi ex, fugiat illo ipsum labore nemo neque officia officiis quas quo saepe
                     soluta sunt totam voluptatem, voluptatibus?</p>
 
-                <address class="media-buttons">
-                    <div class="media-button">
+                <address>
+                    <a href="#">
                         <i class="fa fa-thumbs-up"></i> 5
-                    </div>
-                    <div class="media-button">
+                    </a>
+                    <a href="#">
                         <i class="fa fa-thumbs-down"></i> 3
-                    </div>
+                    </a>
                 </address>
-            </div>
-        </article>
+            </article>
+        </section>
     </main>
 </div>
 </body>
