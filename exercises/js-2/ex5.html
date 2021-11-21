@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    class PaymentMethod {
+        getAmount() {
+            return "Your amount in the account is: ";
+        }
+    }
+
+    class CashMethod extends PaymentMethod {
+        constructor(amount = 0) {
+            super();
+
+            let _amount = amount;
+
+            this.addToAmount = a => new CashMethod(_amount + a);
+            this.reduceFromAmount = a => new CashMethod(_amount - a);
+            this.getAmount = () => super.getAmount() + _amount;
+        }
+    }
+
+    class CreditMethod extends PaymentMethod {
+        constructor(amount = 0) {
+            super();
+
+            let _amount = amount;
+
+            this.addToAmount = a => new CashMethod(_amount + 0.9 * a);
+            this.reduceFromAmount = a => new CashMethod(_amount - a);
+            this.getAmount = () => super.getAmount() + _amount;
+        }
+    }
+
+    const cashAccount = new CashMethod()
+        .addToAmount(100)
+        .addToAmount(20)
+        .addToAmount(30)
+        .reduceFromAmount(10);
+    console.log(cashAccount.getAmount()); // returns “Your amount in the account is: 140”
+
+    const creditAccount = new CreditMethod()
+        .addToAmount(100);
+    console.log(creditAccount.getAmount()); // returns “Your amount in the account is: 90”;
+</script>
+</body>
+</html>

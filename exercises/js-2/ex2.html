@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name) {
+                this.name = name;
+                Person.prototype.planet = 'Earth';
+            }
+        }
+
+        const person1 = new Person('gosho'), person2 = new Person('pesho'), person3 = new Person('sasho');
+
+        Person.prototype.greet = function () { console.log(`Hello ${this.name} from ${this.planet}`) };
+
+        person1.greet();
+        person2.greet();
+        person3.greet();
+    </script>
+</body>
+
+</html>
