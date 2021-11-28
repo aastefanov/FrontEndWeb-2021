@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="students.js"></script>
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <form id="input-form">
+            <input type="text" name="firstName" placeholder="First name" required />
+            <input type="text" name="lastName" placeholder="Last name" required />
+            <input type="number" name="facultyNumber" placeholder="Faculty number" min="10000" max="50000" />
+            <input type="number" name="averageGrade" placeholder="Average of grades" min="2" max="6" step=".01" />
+
+            <button id="btn-submit">Add</button>
+            <div class="buttons-div">
+                <button type="button" id="btn-only-with">Show only with</button>
+                <button type="button" id="btn-only-without">Show only without</button>
+                <button type="button" id="btn-show-all">Show all</button>
+            </div>
+        </form>
+    </div>
+
+    <table class="students-table">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Faculty Number</th>
+                <th>Average grade</th>
+                <th>Added on</th>
+            </tr>
+        </thead>
+        <tbody id="student-data"></tbody>
+    </table>
+</body>
+
+</html>
