@@ -1,0 +1,44 @@
+.countries-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+.country {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 2px solid black;
+    min-width: 10rem;
+
+    margin: 1rem;
+}
+
+.country h1 {
+    font-size: inherit;
+    text-align: center;
+}
+
+.country img {
+    flex: 1;
+    width: 100%;
+}
+
+#university-list {
+    position: fixed;
+    top: 50%;
+    height: 80vh;
+    width: 75%;
+    /*position: fixed;*/
+    left: 50%;
+    margin-left: -37.5%;
+    margin-top: -37.5%;
+    overflow: scroll;
+
+    padding: 0.5rem;
+
+    background-color: #ffffff;
+}
