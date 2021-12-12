@@ -29,13 +29,12 @@
 
 #university-list {
     position: fixed;
-    top: 50%;
-    height: 80vh;
-    width: 75%;
-    /*position: fixed;*/
-    left: 50%;
-    margin-left: -37.5%;
-    margin-top: -37.5%;
+    left: 10%;
+    width: 80%;
+
+    top: 10%;
+    height: 80%;
+
     overflow: scroll;
 
     padding: 0.5rem;

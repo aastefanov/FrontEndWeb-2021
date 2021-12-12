@@ -4,41 +4,19 @@ async function getCountriesAll() {
     return await fetch('https://restcountries.com/v3.1/all?fields=name,flags').then(r => r.json());
 }
 
-async function getUniversitiesAll() {
-    return await fetch(`http://universities.hipolabs.com/search`).then(r => r.json());
+async function getUniversitiesForCountry(country) {
+    return await fetch(`http://universities.hipolabs.com/search?country=${country}`).then(r => r.json());
 }
 
-function groupUniversitiesByCountry(universities) {
-    let universitiesByCountry = {};
-    for (let x of universities) {
-        if (x.country in universitiesByCountry) universitiesByCountry[x.country].push(x);
-        else universitiesByCountry[x.country] = [x];
-    }
-    return universitiesByCountry;
-}
-
-async function getCountriesWithUniversities() {
-    const [countries, universitiesByCountry] = await Promise.all([
-        getCountriesAll(),
-        getUniversitiesAll().then(groupUniversitiesByCountry)
-    ]);
-
-    return countries
-        .filter(x => x.name.common in universitiesByCountry)
-        .map(x => {
-            Object.assign(x, {universities: universitiesByCountry[x.name.common]});
-            return x;
-        });
-}
-
-function showUniversitiesForCountry(country) {
+async function showUniversitiesForCountry(country) {
     const container = document.getElementById('university-list');
 
     const heading = document.createElement('h1');
     heading.innerText = `Universities in ${country.name.common}`;
 
     const ul = document.createElement('ul');
-    country.universities.forEach(u => {
+
+    (await getUniversitiesForCountry(country.name.common)).forEach(u => {
         const li = document.createElement('li');
         li.innerText = u.name;
         ul.appendChild(li);
@@ -56,13 +34,13 @@ function createCountrySection(country) {
     const countrySection = document.createElement('section');
 
     countrySection.classList.add('country');
-    countrySection.onclick = () => showUniversitiesForCountry(country);
+    countrySection.onclick = async () => await showUniversitiesForCountry(country);
 
     const flagImg = document.createElement('img');
     flagImg.src = country.flags.png;
 
     const nameHeader = document.createElement('h1');
-    nameHeader.innerText = `${country.name.common} (${country.universities.length})`;
+    nameHeader.innerText = country.name.common;
 
     countrySection.append(flagImg);
     countrySection.append(nameHeader);
@@ -80,6 +58,5 @@ window.onload = async function () {
 
     const wrapper = document.getElementById('countries');
 
-    getCountriesWithUniversities()
-        .then(countries => countries.forEach(c => wrapper.appendChild(createCountrySection(c))));
+    getCountriesAll().then(countries => countries.forEach(c => wrapper.appendChild(createCountrySection(c))));
 }
