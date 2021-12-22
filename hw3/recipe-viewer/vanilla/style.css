@@ -1,0 +1,205 @@
+:root {
+    --color1: #FFFFFF;
+    --color2: #EAEAEA;
+    --color3: #C4C4C4;
+    --color4: #000000;
+    --fontsize1: 16px;
+    --fontsize2: 32px;
+    --borderradius1: 16px;
+    --borderradius2: 8px;
+    --spacing1: 16px;
+    --spacing2: 8px;
+    --opacity: 0.5;
+    --fontweight1: 700;
+    --fontweight2: 400;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*min-height: 100vh;*/
+
+    font-size: var(--fontsize1);
+    font-weight: var(--fontweight2);
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius1);
+    /*min-width: 40rem;*/
+    /*max-width: 100%;*/
+    width: 40rem;
+    background-color: var(--color1);
+    /*padding: var(--spacing1);*/
+}
+
+.container .inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+    margin: var(--spacing2);
+}
+
+.container .inputs input {
+    margin: var(--spacing2);
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+    padding: var(--spacing2);
+    /*width: 10rem;*/
+    background-color: var(--color2);
+
+}
+
+.container .inputs input::placeholder {
+    color: var(--color4);
+}
+
+
+.container header {
+    background-color: var(--color3);
+    border: 1px solid var(--color4);
+    padding: var(--spacing2);
+}
+
+.container h1 {
+    margin: 0;
+    text-align: center;
+    font-weight: var(--fontweight1);
+    font-size: var(--fontsize2);
+}
+
+.container ul {
+    margin: var(--spacing2);
+    padding: 0;
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+}
+
+.container ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--color4);
+    padding: var(--spacing1);
+    border-collapse: collapse;
+
+}
+
+.container ul li:nth-child(odd) {
+    background-color: var(--color1);
+}
+
+.container ul li:nth-child(even) {
+    background-color: var(--color2);
+}
+
+.recipes {
+    font-weight: var(--fontweight1);
+}
+
+.recipes span {
+    margin: var(--spacing2);
+}
+
+.recipes li div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipes img {
+    height: 3rem;
+    width: auto;
+    border-radius: var(--borderradius2);
+}
+
+button {
+    border: 2px solid var(--color4);
+    padding: var(--spacing2);
+    border-radius: var(--borderradius2);
+    background-color: var(--color3);
+    font-weight: inherit;
+
+    cursor: pointer;
+}
+
+
+.modal img {
+    width: 60%;
+    margin: var(--spacing1);
+}
+
+.modal p {
+    text-align: center;
+}
+
+.modal-body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 80vh;
+
+    padding: var(--spacing1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.modal {
+    position: fixed;
+    top: var(--spacing1);
+}
+
+table, th, td {
+    border: 1px solid var(--color4);
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: var(--spacing2);
+}
+
+table {
+    text-align: left;
+    width: 80%;
+    border-radius: var(--borderradius2);
+    margin: var(--spacing1);
+
+}
+
+th {
+
+    background-color: var(--color3);
+    font-weight: var(--fontweight1);
+}
+
+tr {
+    background-color: var(--color2);
+}
+
+.modal footer {
+    text-align: center;
+    background-color: var(--color2);
+    border: 1px solid var(--color4);
+    padding: var(--spacing2);
+}
+
+.behind-modal {
+    opacity: var(--opacity);
+}

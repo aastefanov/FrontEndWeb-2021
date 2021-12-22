@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>RecipeViewer - Vanilla</title>
+    <link href="style.css" rel="stylesheet"/>
+    <script src="index.js" type="module"></script>
+</head>
+<body>
+
+
+
+<main class="container" id="main">
+    <header><h1>Meal List</h1></header>
+    <div class="inputs">
+        <input id="input-filter-name" placeholder="Filter by name"/>
+        <input id="input-filter-region" placeholder="Filter by region"/>
+        <input id="input-filter-category" placeholder="Filter by category"/>
+    </div>
+    <div>
+        <ul class="recipes" id="recipe-list">
+            <li>
+                <div>
+                    <img alt="icon" class="icon"
+                         src="https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"/>
+                    <span class="name">Croatian Bean Stew</span>
+                </div>
+                <div>
+                    <span class="details">Beef, Croation</span>
+                    <button class="open-btn">See Recipe</button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img alt="icon" class="icon"
+                         src="https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"/>
+                    <span class="name">Croatian Bean Stew</span>
+                </div>
+                <div>
+                    <span class="details">Beef, Croation</span>
+                    <button class="open-btn">See Recipe</button>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <img alt="icon" class="icon"
+                         src="https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"/>
+                    <span class="name">Croatian Bean Stew</span>
+                </div>
+                <div>
+                    <span class="details">Beef, Croation</span>
+                    <button class="open-btn">See Recipe</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<div id="recipe-modal" class="modal" hidden>
+<section class="container modal-container" hidden>
+    <header><h1 id="modal-h1">Pishka</h1></header>
+    <div class="modal-body">
+    <img id="modal-img" src="https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg"/>
+    <p id="modal-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa dolorum earum quibusdam quo quod temporibus? Amet aut fuga iure nihil numquam officiis reiciendis! Aut consectetur dolorum et exercitationem fugiat iste necessitatibus omnis placeat, reprehenderit vitae! Numquam reiciendis ut voluptatem. Cumque deleniti, itaque nihil officia qui sunt tenetur? Ab accusantium adipisci asperiores corporis cum cupiditate deleniti earum eum hic illum inventore iure labore laboriosam libero magni minus natus neque nulla omnis pariatur perferendis porro, possimus praesentium quae quas ratione repellendus sint tempora temporibus vel velit vitae voluptatem voluptatibus? Amet et eum incidunt inventore perspiciatis quae quas, quidem quo tempore vero!</p>
+    <table id="modal-table">
+        <thead>
+        <tr>
+            <th>Ingredients</th>
+            <th>Measure</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ingredients</td>
+            <td>Measure</td>
+        </tr>        <tr>
+            <td>Ingredients</td>
+            <td>Measure</td>
+        </tr>        <tr>
+            <td>Ingredients</td>
+            <td>Measure</td>
+        </tr>
+        </tbody>
+    </table></div>
+
+
+    <footer><button id="modal-close">Close</button></footer>
+</section>
+</div>
+</body>
+</html>
