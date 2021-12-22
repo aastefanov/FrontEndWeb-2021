@@ -1,143 +1,130 @@
-await onPageLoad();
+"use strict";
 
-async function onPageLoad() {
+const element = tagName => document.createElement(tagName);
 
-
-    const recipes = await fetch('https://api.npoint.io/51ed846bdd74ff693d7e').then(x => x.json());
-
-
-    const lsRecipes = [...JSON.parse(window.localStorage.getItem('recipes') ?? "[]")];
-    recipes.meals = [...lsRecipes, ...recipes.meals];
-    // recipeList.innerText = JSON.stringify(recipes);
-
-
-    document.getElementById('modal-close').onclick = () => closeModal();
-
-    document.getElementById('input-filter-name').oninput = () => applyFilters();
-    document.getElementById('input-filter-region').oninput = () => applyFilters();
-    document.getElementById('input-filter-category').oninput = () => applyFilters();
-
-    document.getElementById('btn-new-recipe').onclick =
-        () => document.getElementById('add-recipe-container').hidden = false;
-
-    document.getElementById('btn-add-recipe').onclick = () => addRecipeToLS();
-
-    renderRecipes(recipes);
+HTMLElement.prototype.set = function (attributes) {
+    for (const a in attributes) this.setAttribute(a, attributes[a]);
+    return this;
 }
 
-function addRecipeToLS() {
-    const name = document.getElementById('add-recipe-name').value;
-    const region = document.getElementById('add-recipe-region').value;
-    const category = document.getElementById('add-recipe-category').value;
+HTMLElement.prototype.setHTML = function (html) {
+    this.innerHTML = html;
+    return this;
+}
 
-    if (name == "" || region == "" || category == "") {
-        return;
+HTMLElement.prototype.withAppended = function (nodes) {
+    this.append(nodes);
+    return this;
+}
+
+String.prototype.contains = function (other) {
+    return this.toLowerCase().includes(other.toLowerCase());
+}
+
+const RecipesService = {
+    getRecipesApi: async () => (await fetch('https://api.npoint.io/51ed846bdd74ff693d7e').then(x => x.json())).meals,
+
+    getRecipesLS: () => JSON.parse(window.localStorage.getItem('recipes') ?? "[]"),
+
+    async getRecipes() {
+        return [...this.getRecipesLS(), ...await this.getRecipesApi()];
+    },
+
+    addRecipeToLS(recipe) {
+        window.localStorage.setItem('recipes', JSON.stringify([recipe, ...this.getRecipesLS()]));
     }
+};
 
-    const newRecipe = {name: name, region: region, category: category};
+const ModalService = {
+    openModal(recipe) {
+        document.getElementById('modal-h1').setHTML(recipe.name);
+        document.getElementById('modal-img').set({src: recipe.image, alt: recipe.name});
+        document.getElementById('modal-text').setHTML(recipe.instruction ?? '');
 
-    let recipes = [...JSON.parse(window.localStorage.getItem('recipes') ?? "[]")];
+        const table = document.querySelector('#modal-table tbody').setHTML('');
 
-    window.localStorage.setItem('recipes', JSON.stringify([newRecipe, ...recipes]));
+        [...(recipe.ingredients ?? [])].map(x => element('tr')
+            .withAppended(element('td').setHTML(x.name))
+            .withAppended(element('td').setHTML(x.measure))
+        )
+            .forEach(x => table.append(x));
 
-    const recipeList = document.getElementById('recipe-list');
-    recipeList.prepend(createRecipeLi(newRecipe));
-}
+        this.showModal();
+    },
 
-function createRecipeLi(recipe) {
-    const li = document.createElement('li');
-    li.dataset.name = recipe.name;
-    li.dataset.region = recipe.region;
-    li.dataset.category = recipe.category;
-    // li.innerText = JSON.stringify(recipe);
+    showModal() {
+        document.getElementById('recipe-modal').hidden = false;
+        document.getElementById('main').classList.add('behind-modal');
+    },
 
-    const container1 = document.createElement('div');
-
-    const icon = document.createElement('img');
-    icon.src = recipe.image;
-    icon.alt = recipe.name;
-    container1.append(icon);
-
-
-    const name = document.createElement('span');
-    name.innerText = recipe.name;
-    container1.append(name);
-
-    li.append(container1);
-
-    const container2 = document.createElement('div');
-    const data = document.createElement('span');
-    data.innerText = `${recipe.category}, ${recipe.region}`;
-    const button = document.createElement('button');
-    button.innerText = 'See Recipe';
-
-    button.onclick = () => displayModal(recipe);
-
-    container2.append(data);
-    container2.append(button);
-
-    li.append(container2);
-    return li;
-}
-
-function renderRecipes(recipes) {
-    const recipeList = document.getElementById('recipe-list');
-    recipeList.innerHTML = '';
-
-    for (let recipe of recipes.meals) {
-        // console.log(recipe)
-        const li = createRecipeLi(recipe);
-
-        recipeList.append(li);
+    hideModal() {
+        document.getElementById('recipe-modal').hidden = true;
+        document.getElementById('main').classList.remove('behind-modal');
     }
 }
 
-function applyFilters() {
-    const filterName = document.getElementById('input-filter-name').value;
-    const filterRegion = document.getElementById('input-filter-region').value;
-    const filterCategory = document.getElementById('input-filter-category').value;
+const DOMService = {
+    getRecipeList: () => document.getElementById('recipe-list'),
+    showAddRecipeForm: () => document.getElementById('add-recipe-container').hidden = false,
+    hideAddRecipeForm: () => document.getElementById('add-recipe-container').hidden = true,
 
-    // if (filterName == "" && filterRegion == "" && filterCategory == "") return;
+    onAddRecipe() {
+        const newRecipe = Object.fromEntries(
+            Array.from(document.querySelectorAll('#inputs-add input')).map(x => [x.dataset.key, x.value]));
+        if (Object.values(newRecipe).some(x => !x)) return;
 
-    const recipes = document.getElementById('recipe-list');
+        RecipesService.addRecipeToLS(newRecipe);
+        this.getRecipeList().prepend(this.createRecipeLi(newRecipe));
+        this.hideAddRecipeForm();
+    },
 
-    for (let li of recipes.children) {
-        if (
-            li.dataset.name.toLowerCase().includes(filterName.toLowerCase()) &&
-            li.dataset.region.toLowerCase().includes(filterRegion.toLowerCase()) &&
-            li.dataset.category.toLowerCase().includes(filterCategory.toLowerCase())
-        ) {
-            li.style.display = 'flex';
-        } else {
-            li.style.display = 'none';
+    createRecipeLi(recipe) {
+        const container1 = element('div'), container2 = element('div');
+        const button = element('button').setHTML('See Recipe');
+        button.onclick = () => ModalService.openModal(recipe);
+
+        container1.append(
+            element('img').set({src: recipe.image, alt: recipe.name}),
+            element('span').setHTML(recipe.name));
+        container2.append(element('span').setHTML(`${recipe.category}, ${recipe.region}`), button);
+
+        const li = document.createElement('li');
+        li.dataset.name = recipe.name;
+        li.dataset.region = recipe.region;
+        li.dataset.category = recipe.category;
+        li.append(container1, container2);
+        return li;
+    },
+
+    renderRecipes(recipes) {
+        const recipeList = this.getRecipeList().setHTML('');
+        for (const recipe of recipes) recipeList.append(this.createRecipeLi(recipe));
+    },
+
+    filter() {
+        const inputs = Object.fromEntries(
+            Array.from(document.querySelectorAll('#filters input')).map(x => [x.dataset.filter, x.value]));
+        for (const li of this.getRecipeList().children) {
+            if (Object.entries({...li.dataset}).every(([property, value]) => value.contains(inputs[property]))) {
+                li.style.display = 'flex';
+            } else {
+                li.style.display = 'none';
+            }
         }
     }
+    ,
 }
 
-function displayModal(recipe) {
-    const modal = document.getElementById('recipe-modal')
-    const main = document.getElementById('main');
-
-    modal.querySelector("#modal-h1").innerText = recipe.name ?? '';
-    modal.querySelector('#modal-img').src = recipe.image ?? '';
-    modal.querySelector('#modal-text').innerText = recipe.instruction ?? '';
-
-    const table = modal.querySelector('#modal-table tbody');
-    table.innerHTML = '';
-    for (let ingredient of recipe.ingredients ?? []) {
-        let tr = document.createElement('tr');
-        tr.innerHTML = `<td>${ingredient.name}</td><td>${ingredient.measure}</td>`;
-        table.append(tr);
-    }
-
-    modal.hidden = false;
-    main.classList.add('behind-modal')
+function addListeners() {
+    document.getElementById('modal-close').onclick = () => ModalService.hideModal();
+    document.querySelectorAll('#filters input').forEach(x => x.oninput = () => DOMService.filter());
+    document.getElementById('btn-new-recipe').onclick = () => DOMService.showAddRecipeForm();
+    document.getElementById('btn-add-recipe').onclick = () => DOMService.onAddRecipe();
 }
 
-function closeModal() {
-    const modal = document.getElementById('recipe-modal')
-    const main = document.getElementById('main');
-
-    modal.hidden = true;
-    main.classList.remove('behind-modal');
+async function onPageLoad() {
+    addListeners();
+    DOMService.renderRecipes(await RecipesService.getRecipes());
 }
+
+await onPageLoad();
