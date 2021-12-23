@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Recipe Viewer</title>
+
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./index.js" type="module"></script>
+</head>
+<body>
+<!--    <div id="app"></div>-->
+<ui5-shellbar
+        primary-title="Meal List"
+        show-co-pilot
+        show-notifications
+        show-product-switch
+></ui5-shellbar>
+
+<div class="wrapper">
+    <div class="input-container" id="filters">
+        <ui5-input placeholder="Filter by name" data-filter="name"></ui5-input>
+        <ui5-input placeholder="Filter by region" data-filter="region"></ui5-input>
+        <ui5-input placeholder="Filter by category" data-filter="category"></ui5-input>
+
+        <ui5-button id="btn-new-recipe" design="Emphasized">New recipe</ui5-button>
+        <ui5-button id="btn-clear-recipes">Clear recipes on refresh</ui5-button>
+    </div>
+
+
+
+    <div class="list-container">
+        <ui5-list id="recipe-list" busy="true"></ui5-list>
+    </div>
+</div>
+
+<ui5-dialog id="dialog">
+    <section class="modal-body">
+        <img id="modal-img" class="modal-img" src="#" alt=""/>
+        <p id="modal-text"></p>
+        <ui5-table id="modal-table" class="modal-table">
+            <ui5-table-column slot="columns" class="modal-table-col">Ingredients</ui5-table-column>
+            <ui5-table-column slot="columns" class="modal-table-col">Measure</ui5-table-column>
+        </ui5-table>
+    </section>
+    <div slot="footer" class="dialog-footer">
+        <ui5-button id="close-dialog">Close</ui5-button>
+    </div>
+</ui5-dialog>
+
+<ui5-popover header-text="Add recipe" id="add-recipe-container">
+        <div class="popover-content" id="inputs-add">
+            <ui5-input placeholder="Name" data-key="name"></ui5-input>
+            <ui5-input placeholder="Region" data-key="region"></ui5-input>
+            <ui5-input placeholder="Category" data-key="category"></ui5-input>
+        </div>
+    <div class="popover-footer" slot="footer">
+        <ui5-button id="btn-add-recipe" design="Emphasized">Add recipe</ui5-button>
+        <ui5-button id="btn-close-recipe">Close</ui5-button>
+    </div>
+</ui5-popover>
+</body>
+</html>
