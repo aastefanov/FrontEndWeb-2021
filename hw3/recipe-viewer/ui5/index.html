@@ -51,10 +51,12 @@
 </ui5-dialog>
 
 <ui5-popover header-text="Add recipe" id="add-recipe-container">
-        <div class="popover-content" id="inputs-add">
+        <div class="popover-content form-inputs" id="inputs-add">
             <ui5-input placeholder="Name" data-key="name"></ui5-input>
             <ui5-input placeholder="Region" data-key="region"></ui5-input>
             <ui5-input placeholder="Category" data-key="category"></ui5-input>
+            <ui5-input placeholder="Image URL" data-key="image"></ui5-input>
+            <ui5-input placeholder="Instructions" data-key="instruction"></ui5-input>
         </div>
     <div class="popover-footer" slot="footer">
         <ui5-button id="btn-add-recipe" design="Emphasized">Add recipe</ui5-button>

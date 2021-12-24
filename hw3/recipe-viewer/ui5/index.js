@@ -4,7 +4,6 @@ import '../common/helpers'
 
 import * as DOMService from './dom';
 import * as ModalService from './modal';
-import * as RecipeService from "../common/recipes";
 
 import '@ui5/webcomponents/dist/Button';
 import '@ui5/webcomponents/dist/Dialog';
@@ -49,7 +48,7 @@ function addListeners() {
 
 async function onPageLoad() {
     addListeners();
-    DOMService.renderRecipes(await RecipeService.getRecipes());
+    DOMService.renderRecipes(await RecipesService.getRecipes());
 }
 
 await onPageLoad();

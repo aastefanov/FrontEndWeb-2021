@@ -29,8 +29,7 @@
 
 .modal-body {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 1rem;
@@ -42,4 +41,16 @@
 
 .modal-img {
     max-width: 30rem;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.form-inputs ui5-input {
+    margin: .5rem;
 }
