@@ -1,0 +1,227 @@
+:root {
+    --color1: #FFFFFF;
+    --color2: #EAEAEA;
+    --color3: #C4C4C4;
+    --color4: #000000;
+    --fontsize1: 16px;
+    --fontsize2: 32px;
+    --borderradius1: 16px;
+    --borderradius2: 8px;
+    --spacing1: 16px;
+    --spacing2: 8px;
+    --opacity: 0.5;
+    --fontweight1: 700;
+    --fontweight2: 400;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-size: var(--fontsize1);
+    font-weight: var(--fontweight2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.container {
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius1);
+    width: 45rem;
+    background-color: var(--color1);
+    overflow: hidden;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+    margin: var(--spacing2);
+}
+
+.inputs input {
+    margin: var(--spacing2);
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+    padding: var(--spacing2);
+    background-color: var(--color2);
+}
+
+.inputs input::placeholder {
+    color: var(--color4);
+}
+
+button {
+    border: 2px solid var(--color4);
+    padding: var(--spacing2);
+    border-radius: var(--borderradius2);
+    background-color: var(--color3);
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+.container header {
+    text-align: center;
+    background-color: var(--color3);
+    border-bottom: 1px solid var(--color4);
+    padding: var(--spacing2);
+}
+
+.container footer {
+    text-align: center;
+    background-color: var(--color2);
+    border-top: 1px solid var(--color4);
+    padding: var(--spacing2);
+}
+
+.container h1 {
+    margin: 0;
+    text-align: center;
+    font-weight: var(--fontweight1);
+    font-size: var(--fontsize2);
+}
+
+.recipes {
+    margin: var(--spacing2);
+    padding: 0;
+    border: 1px solid var(--color4);
+    border-radius: var(--borderradius2);
+    font-weight: var(--fontweight1);
+    overflow: hidden;
+}
+
+.recipes li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color4);
+    padding: var(--spacing1);
+}
+
+.recipes li:last-child {
+    border-bottom: none;
+}
+
+.recipes li:nth-child(odd) {
+    background-color: var(--color1);
+}
+
+.recipes li:nth-child(even) {
+    background-color: var(--color2);
+}
+
+.recipes span {
+    margin: var(--spacing2);
+}
+
+.recipes div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipes img {
+    height: 3rem;
+    width: auto;
+    border-radius: var(--borderradius2);
+}
+
+
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    max-height: 90vh;
+}
+
+.modal {
+    position: fixed;
+    top: var(--spacing1);
+}
+
+.modal-body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    padding: var(--spacing1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.modal img {
+    width: 60%;
+    margin: var(--spacing1);
+}
+
+.modal p {
+    text-align: center;
+}
+
+.modal-table {
+    border-spacing: 0;
+    text-align: left;
+    width: 80%;
+    margin: var(--spacing1);
+    border-radius: var(--borderradius2);
+}
+
+.modal-table th {
+    background-color: var(--color3);
+    font-weight: var(--fontweight1);
+}
+
+.modal-table tr {
+    background-color: var(--color2);
+}
+
+.modal-table th:first-of-type {
+    border-top-left-radius: var(--borderradius2);
+}
+
+.modal-table th:last-of-type {
+    border-top-right-radius: var(--borderradius2);
+}
+
+.modal-table tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: var(--borderradius2);
+}
+
+.modal-table tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: var(--borderradius2);
+}
+
+.modal-table th, .modal-table td {
+    border-right: 1px solid var(--color4);
+    border-bottom: 1px solid var(--color4);
+    padding: var(--spacing2);
+}
+
+.modal-table tr th:first-child, .modal-table tr td:first-child {
+    border-left: 1px solid var(--color4);
+}
+
+.modal-table tr th, .modal-table tr:first-child th {
+    border-top: 1px solid var(--color4);
+}
+
+.behind-modal {
+    opacity: var(--opacity);
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}

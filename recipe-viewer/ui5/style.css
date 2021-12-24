@@ -1,0 +1,56 @@
+.input-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1rem;
+}
+
+.input-container ui5-input, .input-container ui5-button {
+    margin: 1rem;
+}
+
+.list-container {
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    padding: 1rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.modal-body p {
+    text-align: center;
+}
+
+.modal-img {
+    max-width: 30rem;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.form-inputs ui5-input {
+    margin: .5rem;
+}

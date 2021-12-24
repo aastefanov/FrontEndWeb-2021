@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>RecipeViewer - Vanilla</title>
+    <link href="./style.css" rel="stylesheet"/>
+    <script src="./index.js" type="module"></script>
+</head>
+<body>
+<main class="container" id="main">
+    <header><h1>Meal List</h1></header>
+    <div class="inputs" id="filters">
+        <input placeholder="Filter by name" data-filter="name"/>
+        <input placeholder="Filter by region" data-filter="region"/>
+        <input placeholder="Filter by category" data-filter="category"/>
+        <button id="btn-new-recipe">New recipe</button>
+    </div>
+
+    <div id="add-recipe-container" hidden>
+        <div class="inputs form-inputs" id="inputs-add">
+            <input type="text" placeholder="Name" data-key="name"/>
+            <input type="text" placeholder="Region" data-key="region"/>
+            <input type="text" placeholder="Category" data-key="category"/>
+            <input type="url" placeholder="Image URL" data-key="image"/>
+            <input placeholder="Instructions" data-key="instruction"/>
+            <button id="btn-add-recipe">Add recipe</button>
+        </div>
+    </div>
+
+    <div>
+        <ul class="recipes" id="recipe-list">
+        </ul>
+    </div>
+</main>
+
+<div id="recipe-modal" class="modal" hidden>
+    <section class="container modal-container">
+        <header><h1 id="modal-h1"></h1></header>
+        <main class="modal-body">
+            <img id="modal-img" src="#" alt=""/>
+            <p id="modal-text"></p>
+            <table id="modal-table" class="modal-table">
+                <thead>
+                <tr>
+                    <th>Ingredients</th>
+                    <th>Measure</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </main>
+        <footer>
+            <button id="modal-close">Close</button>
+        </footer>
+    </section>
+</div>
+
+</body>
+</html>
